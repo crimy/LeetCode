@@ -7,6 +7,11 @@ Top Interview Questions
 + Trees
 	+ [Maximum_Depth_of_Binary_Tree](#이진트리깊이)
 	+ [Validate Binary Search Tree](#이진검색트리유효)
+
++ Sorting And Searching
+	+ [First Bad Version](#첫불량버젼)
+	+ [Merge Sorted Array](#정렬된배열합치기)
+	
 ------------------------
 
 ### 리스트뒤집기
@@ -128,3 +133,99 @@ isValid 함수에 각 노드 단계별 지켜야할 최소,최대값을 입력�
 isValid 함수의 리턴값은 재귀호출을 통해 왼쪽,오른쪽의 비교가 동시에 만족할 경우 true를 리턴하도록 && 을 이용해 두 재귀호출 함수를 묶어준다.
 코드를 깔끔히 정리하는데 꽤 애를 많이 먹었고, 생각보다 고려할 경우의 수가 많았다. 처음엔 더 윗단계의 값을 고려하지 않아 최소값, 최대값을 지정하지않고 단순 바로 위의 노드만을 고려했다.
 오답처리가 된 것을 확인해 더 윗단계의 값을 고려해야한다는 것을 알게됐고, 위와 같이 수정했다.
+
+----------------------
+
+### 첫불량버젼
+
+<h2>  First Bad Version</h2><hr><div><p>You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.</p>
+
+<p>Suppose you have <code>n</code> versions <code>[1, 2, ..., n]</code> and you want to find out the first bad one, which causes all the following ones to be bad.</p>
+
+<p>You are given an API <code>bool isBadVersion(version)</code> which returns whether <code>version</code> is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> n = 5, bad = 4
+<strong>Output:</strong> 4
+<strong>Explanation:</strong>
+call isBadVersion(3) -&gt; false
+call isBadVersion(5)&nbsp;-&gt; true
+call isBadVersion(4)&nbsp;-&gt; true
+Then 4 is the first bad version.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> n = 1, bad = 1
+<strong>Output:</strong> 1
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= bad &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
+</ul>
+</div>
+
+### 풀이
+
+가장 처음은 앞에서부터 차례로 1씩 증가시키며 테스트 하는 방법을 택했다. 작은 수에서는 문제가 없었지만 테스트 대상이 매우 큰 수가 되자 시간 초과로 에러가 발생했다.
+소요 시간을 줄이기 위해서는 반드시 절반씩 줄이는 방법을 택해야겠다는 생각을 했고, min과 max값을 설정하고 mid값을 이용해 테스트를 하고 테스트 결과에 따라 min과 max 값을 변경하며 범위를 수정해나가며 테스트하도록했다.
+
+-----------------------------
+
+### 정렬된배열합치기
+
+<h2>  Merge Sorted Array</h2><hr><div><p>You are given two integer arrays <code>nums1</code> and <code>nums2</code>, sorted in <strong>non-decreasing order</strong>, and two integers <code>m</code> and <code>n</code>, representing the number of elements in <code>nums1</code> and <code>nums2</code> respectively.</p>
+
+<p><strong>Merge</strong> <code>nums1</code> and <code>nums2</code> into a single array sorted in <strong>non-decreasing order</strong>.</p>
+
+<p>The final sorted array should not be returned by the function, but instead be <em>stored inside the array </em><code>nums1</code>. To accommodate this, <code>nums1</code> has a length of <code>m + n</code>, where the first <code>m</code> elements denote the elements that should be merged, and the last <code>n</code> elements are set to <code>0</code> and should be ignored. <code>nums2</code> has a length of <code>n</code>.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+<strong>Output:</strong> [1,2,2,3,5,6]
+<strong>Explanation:</strong> The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [<u>1</u>,<u>2</u>,2,<u>3</u>,5,6] with the underlined elements coming from nums1.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [1], m = 1, nums2 = [], n = 0
+<strong>Output:</strong> [1]
+<strong>Explanation:</strong> The arrays we are merging are [1] and [].
+The result of the merge is [1].
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> nums1 = [0], m = 0, nums2 = [1], n = 1
+<strong>Output:</strong> [1]
+<strong>Explanation:</strong> The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>nums1.length == m + n</code></li>
+	<li><code>nums2.length == n</code></li>
+	<li><code>0 &lt;= m, n &lt;= 200</code></li>
+	<li><code>1 &lt;= m + n &lt;= 200</code></li>
+	<li><code>-10<sup>9</sup> &lt;= nums1[i], nums2[j] &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up: </strong>Can you come up with an algorithm that runs in <code>O(m + n)</code> time?</p>
+</div>
+
+### 풀이
+
+nums1의 m번 index부터 무효값인 0이 입력돼있기 때문에 for문을 m부터 시작하여 차례로 nums2 의 값을 대입한 후, Array.sort를 이용하여 nums1을 다시 정렬했다.
