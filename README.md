@@ -12,6 +12,8 @@ Top Interview Questions
 	+ [First Bad Version](#첫불량버젼)
 	+ [Merge Sorted Array](#정렬된배열합치기)
 	
++ Math
+	+ [Fizz Buzz](#피즈버즈) 
 ------------------------
 
 ### 리스트뒤집기
@@ -229,3 +231,40 @@ Note that because m = 0, there are no elements in nums1. The 0 is only there to 
 ### 풀이
 
 nums1의 m번 index부터 무효값인 0이 입력돼있기 때문에 for문을 m부터 시작하여 차례로 nums2 의 값을 대입한 후, Array.sort를 이용하여 nums1을 다시 정렬했다.
+
+---------------------------
+
+### 피즈버즈
+
+<h2>  Fizz Buzz</h2><hr><div><p>Given an integer <code>n</code>, return <em>a string array </em><code>answer</code><em> (<strong>1-indexed</strong>) where</em>:</p>
+
+<ul>
+	<li><code>answer[i] == "FizzBuzz"</code> if <code>i</code> is divisible by <code>3</code> and <code>5</code>.</li>
+	<li><code>answer[i] == "Fizz"</code> if <code>i</code> is divisible by <code>3</code>.</li>
+	<li><code>answer[i] == "Buzz"</code> if <code>i</code> is divisible by <code>5</code>.</li>
+	<li><code>answer[i] == i</code> (as a string) if none of the above conditions are true.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> n = 3
+<strong>Output:</strong> ["1","2","Fizz"]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> n = 5
+<strong>Output:</strong> ["1","2","Fizz","4","Buzz"]
+</pre><p><strong>Example 3:</strong></p>
+<pre><strong>Input:</strong> n = 15
+<strong>Output:</strong> ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
+</ul>
+</div>
+
+### 풀이
+for문을 이용해 list에 String을 하나씩 add하고, else if 를 이용해 가장 작은 경우의 수부터 제외해 나가며 적합한 값을 추가해나갔다.
+겹치는 경우가 생겨 중복입력이 발생할 수 있는 15 배수에 FizzBuzz를 가장 먼저 입력하고 3과 5의 배수는 15의 배수를 제거하면 겹치는 경우가 없기 때문에 순서에 상관 없이 추가했다.
+모든 경우를 벗어나면 else 를 이용해 해당 i를 Integer.toString을 이용해 입력했다.
