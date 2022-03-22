@@ -3,6 +3,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 Top Interview Questions
 + List
   + [Reverse_Linked_List](#리스트뒤집기)
+  + [Move Zeros](#0옮기기)
+  + [Two Sum](#두수의합)
 
 + Trees
 	+ [Maximum_Depth_of_Binary_Tree](#이진트리깊이)
@@ -268,3 +270,83 @@ nums1의 m번 index부터 무효값인 0이 입력돼있기 때문에 for문을 
 for문을 이용해 list에 String을 하나씩 add하고, else if 를 이용해 가장 작은 경우의 수부터 제외해 나가며 적합한 값을 추가해나갔다.
 겹치는 경우가 생겨 중복입력이 발생할 수 있는 15 배수에 FizzBuzz를 가장 먼저 입력하고 3과 5의 배수는 15의 배수를 제거하면 겹치는 경우가 없기 때문에 순서에 상관 없이 추가했다.
 모든 경우를 벗어나면 else 를 이용해 해당 i를 Integer.toString을 이용해 입력했다.
+
+-------------------
+
+### 0옮기기
+
+<h2>  Move Zeroes</h2><hr><div><p>Given an integer array <code>nums</code>, move all <code>0</code>'s to the end of it while maintaining the relative order of the non-zero elements.</p>
+
+<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+<pre><strong>Input:</strong> nums = [0,1,0,3,12]
+<strong>Output:</strong> [1,3,12,0,0]
+</pre><p><strong>Example 2:</strong></p>
+<pre><strong>Input:</strong> nums = [0]
+<strong>Output:</strong> [0]
+</pre>
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
+</ul>
+
+<p>&nbsp;</p>
+<strong>Follow up:</strong> Could you minimize the total number of operations done?</div>
+
+### 풀이 
+
+for문에서 탐색할 index인 i와 nums에 새로 입력할 index를 따로 선언한다. 해당 nums[i]가 0이라면 i만 증가시켜 다음 nums를 탐색하고 0이 아니라면 nums[index]에 nums[i]를 대입하고 index를 증가시켜 다음 번호에 입력할 수 있도록 한다.
+마지막으로 while( index != nums.length ) 로 남아있는 nums를 0으로 채운다.
+
+------------------------
+
+### 두수의합
+
+<h2>  Two Sum</h2><hr><div><p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>
+
+<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+
+<p>You can return the answer in any order.</p>
+
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [2,7,11,15], target = 9
+<strong>Output:</strong> [0,1]
+<strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we return [0, 1].
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [3,2,4], target = 6
+<strong>Output:</strong> [1,2]
+</pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><strong>Input:</strong> nums = [3,3], target = 6
+<strong>Output:</strong> [0,1]
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+	<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
+	<li><strong>Only one valid answer exists.</strong></li>
+</ul>
+
+<p>&nbsp;</p>
+<strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than&nbsp;<code>O(n<sup>2</sup>)&nbsp;</code>time complexity?</div>
+
+### 풀이 
+
+두 index i와 j 를 for문 2번을 거쳐 뒤쪽의 수를 차례대로 i를 선택했을 때 부터 target과의 차를 구해 뒤쪽 수들 중 해당 값(answer)가 있는지 확인한다.
+answer와 같은 값이 발견되면 i와 j 를 result[0],result[1]에 대입하여 return한다.
